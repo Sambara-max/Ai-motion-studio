@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Motion Studio</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0b0d12;color:#f4f5f7;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}.app{display:flex;min-height:100vh}.sidebar{width:230px;background:#10131a;border-right:1px solid #232733;padding:22px 16px;display:flex;flex-direction:column;gap:9px}.brand{display:flex;gap:10px;align-items:center;margin-bottom:28px}.brand .logo{width:34px;height:34px;display:grid;place-items:center;border-radius:10px;background:#fff;color:#111}.brand b{display:block;font-size:15px}.brand small{color:#8f96a5}.nav{border:0;background:transparent;color:#9da4b3;text-align:left;padding:12px;border-radius:9px;font-size:14px}.nav.active,.nav:hover{background:#1b1f29;color:#fff}.side-bottom{margin-top:auto}.credit-card{background:#171b24;border:1px solid #292e3a;border-radius:12px;padding:13px;display:grid;gap:4px}.credit-card small,.credit-card span{color:#8e95a4;font-size:11px}.credit-card strong{font-size:24px}main{flex:1;max-width:1280px;margin:auto;padding:34px 42px}header{display:flex;justify-content:space-between;align-items:center}.eyebrow{font-size:10px;letter-spacing:2px;color:#8d95a5}h1{font-size:28px;margin:7px 0 0}.status{font-size:12px;color:#aab1c0;border:1px solid #2b303c;border-radius:20px;padding:8px 12px}.status i{display:inline-block;width:7px;height:7px;background:#65e6a2;border-radius:50%;margin-right:7px}.hero{margin-top:28px;border:1px solid #2a2f3b;border-radius:18px;padding:26px;background:linear-gradient(135deg,#171b25,#10131a);display:flex;justify-content:space-between;align-items:center}.pill{font-size:10px;letter-spacing:1.5px;color:#aeb5c2}.hero h2{font-size:30px;margin:9px 0}.hero p{color:#9aa2b1;margin:0}.spark{font-size:70px;opacity:.75}.workspace{display:grid;grid-template-columns:1fr 1.15fr;gap:18px;margin-top:18px}.panel{border:1px solid #292e3a;border-radius:16px;background:#11151d;padding:20px}label{display:block;font-size:12px;color:#aab1c0;margin:0 0 8px}textarea,input,select{width:100%;background:#0b0e14;border:1px solid #2b303c;border-radius:10px;color:#f3f4f6;padding:12px;font:inherit;outline:none}textarea{height:145px;resize:vertical}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}.generate{width:100%;margin-top:17px;border:0;border-radius:10px;padding:13px;background:#fff;color:#0b0d12;font-weight:700;cursor:pointer}.generate span{float:right}.hint{font-size:11px;color:#747c8d}.preview{min-height:390px}.preview-head{display:flex;justify-content:space-between;color:#aeb5c2;font-size:12px;margin-bottom:13px}.scenes{display:grid;gap:9px;max-height:490px;overflow:auto}.scene{border:1px solid #282d38;border-radius:11px;padding:12px;background:#0d1016}.scene-top{display:flex;justify-content:space-between;gap:10px}.scene b{font-size:13px}.scene span{font-size:10px;color:#737b8a}.scene p{font-size:12px;line-height:1.5;color:#a9b0bd;margin:8px 0 0}.empty{height:300px;display:grid;place-items:center;align-content:center;color:#6e7686}.empty div{font-size:40px}.editor{margin-top:18px}.pipeline{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.pipeline div{border:1px solid #272c37;border-radius:10px;padding:12px}.pipeline b{display:block;font-size:10px;color:#777f8f}.pipeline strong{display:block;font-size:12px;margin:7px 0}.pipeline small{color:#737b89;font-size:10px}@media(max-width:900px){.sidebar{display:none}main{padding:20px}.workspace{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><span class="logo">✦</span><div><b>AI Motion</b><small>Studio</small></div></div>
+    <button class="nav active">⌂ Dashboard</button>
+    <button class="nav">▣ Projects</button>
+    <button class="nav">◉ Characters</button>
+    <button class="nav">◫ Templates</button>
+    <div class="side-bottom">
+      <div class="credit-card"><small>Free credits</small><strong>100</strong><span>Demo mode</span></div>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <div><div class="eyebrow">AI VIDEO CREATOR</div><h1>Create your next story</h1></div>
+      <div class="status"><i></i> Free MVP</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="pill">TEXT → STORYBOARD → VIDEO</span>
+        <h2>Turn an idea into scenes.</h2>
+        <p>Write your story, lock a character, choose a format and generate a storyboard.</p>
+      </div>
+      <div class="spark">✦</div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel">
+        <label>Story prompt</label>
+        <textarea id="prompt" placeholder="Example: A young village boy rescues a puppy during heavy rain and brings it home..."></textarea>
+
+        <div class="grid">
+          <div>
+            <label>Format</label>
+            <select id="format">
+              <option value="9:16">9:16 — Shorts/Reels</option>
+              <option value="16:9">16:9 — YouTube</option>
+              <option value="1:1">1:1 — Social</option>
+            </select>
+          </div>
+          <div>
+            <label>Scenes</label>
+            <select id="sceneCount">
+              <option>4</option><option selected>5</option><option>6</option><option>8</option>
+            </select>
+          </div>
+        </div>
+
+        <label>Character lock</label>
+        <input id="character" placeholder="e.g. Rohan, 12-year-old Indian village boy, blue shirt">
+
+        <button class="generate" id="generate">Generate storyboard <span>→</span></button>
+        <p class="hint" id="hint">Runs in demo mode for ₹0. Real AI generation can be connected later.</p>
+      </div>
+
+      <div class="panel preview">
+        <div class="preview-head"><span>Storyboard</span><span id="count">0 scenes</span></div>
+        <div id="scenes" class="scenes">
+          <div class="empty"><div>✦</div><p>Your scenes will appear here.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="editor panel">
+      <div class="preview-head"><span>Production pipeline</span><span>Ready for AI providers</span></div>
+      <div class="pipeline">
+        <div><b>01</b><strong>Storyboard</strong><small>Prompt → scenes</small></div>
+        <div><b>02</b><strong>Character</strong><small>Consistent identity</small></div>
+        <div><b>03</b><strong>Image</strong><small>AI frames</small></div>
+        <div><b>04</b><strong>Motion</strong><small>Image → video</small></div>
+        <div><b>05</b><strong>Voice</strong><small>Voice-over</small></div>
+        <div><b>06</b><strong>Export</strong><small>HD download</small></div>
+      </div>
+    </section>
+  </main>
+</div>
+<script>
+const API = "http://localhost:8000";
+const $ = id => document.getElementById(id);
+
+function renderScenes(scenes){
+  $("count").textContent = `${scenes.length} scenes`;
+  $("scenes").innerHTML = scenes.map((s,i)=>`
+    <div class="scene">
+      <div class="scene-top"><b>${s.title}</b><span>${s.duration}s</span></div>
+      <p>${s.prompt}</p>
+    </div>`).join("");
+}
+
+$("generate").addEventListener("click", async ()=>{
+  const prompt = $("prompt").value.trim();
+  if(!prompt){ $("prompt").focus(); $("hint").textContent="Write a story prompt first."; return; }
+  $("generate").disabled = true;
+  $("generate").textContent = "Generating…";
+  try{
+    const res = await fetch(`${API}/api/generate-storyboard`,{
+      method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        prompt, format:$("format").value,
+        character:$("character").value.trim() || null,
+        scenes:Number($("sceneCount").value)
+      })
+    });
+    if(!res.ok) throw new Error("API unavailable");
+    const data = await res.json();
+    renderScenes(data.scenes);
+    $("hint").textContent = data.message;
+    localStorage.setItem("ai_motion_project", JSON.stringify(data));
+  }catch(e){
+    const count = Number($("sceneCount").value);
+    const scenes = Array.from({length:count},(_,i)=>({
+      title:`Scene ${i+1}`,
+      duration:5,
+      prompt:`${prompt}. Scene ${i+1}, cinematic composition, consistent character, realistic lighting, detailed environment, ${$("format").value}.`
+    }));
+    renderScenes(scenes);
+    $("hint").textContent = "Offline demo mode: storyboard generated locally. Start the backend for API mode.";
+  }finally{
+    $("generate").disabled = false;
+    $("generate").innerHTML = 'Generate storyboard <span>→</span>';
+  }
+});
+
+</script>
+</body>
+</html>
